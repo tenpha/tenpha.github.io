@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="en">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,7 +83,7 @@
 <meta property="og:title" content="tenpha&#39;s blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="tenpha&#39;s blog">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tenpha&#39;s blog">
 
@@ -101,7 +101,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -133,7 +133,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
-            首页
+            Home
           </a>
         </li>
       
@@ -192,7 +192,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            归档
+            Archives
           </a>
         </li>
       
@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/Hexo-github/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/Learn-Git-and-Github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tenpha">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/18/Hexo-github/" itemprop="url">Hexo-github</a></h1>
+                <a class="post-title-link" href="/2019/09/18/Learn-Git-and-Github/" itemprop="url">Learn Git and Github</a></h1>
         
 
         <div class="post-meta">
@@ -258,9 +258,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T13:18:59+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-18T20:01:53+08:00">
                 2019-09-18
               </time>
             
@@ -300,7 +300,41 @@
       
         
           
-            
+            <p>系统的学习git可以前往<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的教程</a>。</p>
+<h2 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h2><p>假设已经安装好git，此时我们如何使用git创建版本库来管理我们的项目？打开git bash并且输入以下代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> d:\Code\learngit</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>git init 初始化当前文件夹为一个版本库，于是git可以控制在此文件夹或其子文件夹的内容。（文件夹的内容不需要为空）</p>
+</blockquote>
+<p>现在一个项目已被git管理，我们现在添加一个文件learngit.txt并修改它。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">git add <span class="string">"learngit.txt"</span></span><br><span class="line">git commit -m <span class="string">"add some words in learngit.txt"</span></span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>git status 查看当前工作区的状态，git add 将当前工作区修改的文件添加到缓冲区(git add . 添加当前文件夹下所有文件)，git commit 将缓存区的修改全部提交到master分支中，-m 是这次提交的描述（description），git diff 用于查看版本库和未提交到缓存区的文件的不同（即在 git add操作之前）。</p>
+</blockquote>
+<p>经过多次commit提交后，git上会保存多个版本，如果我们想回到上一个版本:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git reset --hard head^</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>git log ：查看版本提交记录， head^为回到上一个版本 ^^head回到倒数第二个版本，注意回到前面的某个版本Vo后，Vo后面的log信息将不存在。git reset –hard &lt;……&gt; …是用git log 查出来的版本号，输入前几位git即可搜索，此命令可以回到该版本号的版本。</p>
+</blockquote>
+<p>现在又想回到最新的版本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br><span class="line">git reset --hard &lt;......&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>get reflog 可以查看版本操作历史，可以列出所有的版本号。</p>
+</blockquote>
+<p>如何撤销修改</p>
+<ul>
+<li><p>撤销未进入换成区的修改  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;filename&gt;</span><br><span class="line">``` </span><br><span class="line">- 将缓存区的修改撤销，移回工作区</span><br><span class="line">```bash</span><br><span class="line">git restore unstaged --&lt;filename&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>已经提交到版本库，commit后自然只有回退版本了。</p>
+</li>
+</ul>
+<p>删除文件<br>用 rm <filename> 删除的文件可以用 git checkout – <filename> 恢复，git rm <filename>删除的文件只能通过回退版本。</filename></filename></filename></p>
+<h2 id="远程仓库-github"><a href="#远程仓库-github" class="headerlink" title="远程仓库(github)"></a>远程仓库(github)</h2>
           
         
       
@@ -377,9 +411,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T12:53:08+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-18T12:53:08+08:00">
                 2019-09-18
               </time>
             
@@ -514,13 +548,22 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">日志</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
@@ -564,7 +607,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -572,7 +615,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
