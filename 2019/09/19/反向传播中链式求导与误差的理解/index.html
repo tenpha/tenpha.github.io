@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="问题描述 人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:$$grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}$$那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念">
+<meta name="description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:$ grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i} $ 那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念">
 <meta name="keywords" content="Neural Network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="反向传播中链式求导与误差的理解">
 <meta property="og:url" content="http://yoursite.com/2019/09/19/反向传播中链式求导与误差的理解/index.html">
 <meta property="og:site_name" content="tenpha&#39;s blog">
-<meta property="og:description" content="问题描述 人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:$$grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}$$那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念">
+<meta property="og:description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:$ grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i} $ 那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-19T07:10:28.660Z">
+<meta property="og:updated_time" content="2019-09-19T07:21:58.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反向传播中链式求导与误差的理解">
-<meta name="twitter:description" content="问题描述 人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:$$grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}$$那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念">
+<meta name="twitter:description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:$ grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i} $ 那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念">
 
 
 
@@ -300,14 +300,12 @@
       
 
       
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><hr>
-<p>人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:<br>$$<br>grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}<br>$$<br>那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？</p>
-<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><hr>
-<p>首先可以肯定的是反向传播算法的本质依然是使用链式求导法则。但没有直接使用链式求导，而用反向传播算法和误差的原因我认为有两点:</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:<br>$ grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i} $</p>
+<p>那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>首先可以肯定的是反向传播算法的本质依然是使用链式求导法则。但没有直接使用链式求导，而用反向传播算法和误差的原因我认为有两点:</p>
 <h3 id="1-模型的通用化"><a href="#1-模型的通用化" class="headerlink" title="1. 模型的通用化"></a>1. 模型的通用化</h3><p>对于一个较深的神经网络，求导每一层参数的梯度的公式都不一样，比如第一层的梯度一定是一个非常长串的公式。反向传播中误差δ只是一个记号，暂存了求导时的中间变量。虽然不清楚反向传播每一层的具体细节做了什么，但可以理解为每一层都用相同的模式处理，就是用该层的误差去更新该层的权重。</p>
 <h3 id="2-缩减计算成本"><a href="#2-缩减计算成本" class="headerlink" title="2. 缩减计算成本"></a>2. 缩减计算成本</h3><p>回顾高数中的链式求导，可以知道求导过程中存在大量的重复计算，求解链末端的导数需要将前面的导数都计算一遍。引入δ误差存储中间结果，极大的避免了重复计算。</p>
-<h2 id="中间层的误差究竟表示什么？"><a href="#中间层的误差究竟表示什么？" class="headerlink" title="中间层的误差究竟表示什么？"></a>中间层的误差究竟表示什么？</h2><hr>
-
+<h2 id="中间层的误差究竟表示什么？"><a href="#中间层的误差究竟表示什么？" class="headerlink" title="中间层的误差究竟表示什么？"></a>中间层的误差究竟表示什么？</h2>
       
     </div>
     
