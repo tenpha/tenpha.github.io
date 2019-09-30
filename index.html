@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
+<html class="theme-next gemini use-motion" lang="en">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,7 +93,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -437,17 +437,18 @@
 
       
         
-          
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:  </p>
-<script type="math/tex; mode=display">grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}</script><p>那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？</p>
-<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>首先可以肯定的是反向传播算法的本质依然是使用链式求导法则。但没有直接使用链式求导，而用反向传播算法和误差的原因我认为有两点:</p>
-<h3 id="1-模型的通用化"><a href="#1-模型的通用化" class="headerlink" title="1. 模型的通用化"></a>1. 模型的通用化</h3><p>对于一个较深的神经网络，求导每一层参数的梯度的公式都不一样，比如第一层的梯度一定是一个非常长串的公式。反向传播中误差δ只是一个记号，暂存了求导时的中间变量。虽然不清楚反向传播每一层的具体细节做了什么，但可以理解为每一层都用相同的模式处理，就是用该层的误差去更新该层的权重。</p>
-<h3 id="2-缩减计算成本"><a href="#2-缩减计算成本" class="headerlink" title="2. 缩减计算成本"></a>2. 缩减计算成本</h3><p>回顾高数中的链式求导，可以知道求导过程中存在大量的重复计算，求解链末端的导数需要将前面的导数都计算一遍。引入δ误差存储中间结果，极大的避免了重复计算。</p>
-
-          
+          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:  </p>
+<script type="math/tex; mode=display">grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}</script><p>那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/19/反向传播中链式求导与误差的理解/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -561,38 +562,20 @@
 
       
         
-          
-            <p>系统的学习git可以前往<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的教程</a>。</p>
+          <p>系统的学习git可以前往<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的教程</a>。</p>
 <h2 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h2><p>假设已经安装好git，此时我们如何使用git创建版本库来管理我们的项目？打开git bash并且输入以下代码:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> d:\Code\learngit</span><br><span class="line">git init</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>git init 初始化当前文件夹为一个版本库，于是git可以控制在此文件夹或其子文件夹的内容。（文件夹的内容不需要为空）</p>
-</blockquote>
-<p>现在一个项目已被git管理，我们现在添加一个文件learngit.txt并修改它。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">git add <span class="string">"learngit.txt"</span></span><br><span class="line">git commit -m <span class="string">"add some words in learngit.txt"</span></span><br><span class="line">git status</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>git status 查看当前工作区的状态，git add 将当前工作区修改的文件添加到缓冲区(git add . 添加当前文件夹下所有文件)，git commit 将缓存区的修改全部提交到master分支中，-m 是这次提交的描述（description），git diff 用于查看版本库和未提交到缓存区的文件的不同（即在 git add操作之前）。</p>
-</blockquote>
-<p>经过多次commit提交后，git上会保存多个版本，如果我们想回到上一个版本:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br><span class="line">git reset --hard head^</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>git log ：查看版本提交记录， head^为回到上一个版本 ^^head回到倒数第二个版本，注意回到前面的某个版本Vo后，Vo后面的log信息将不存在。git reset —hard &lt;……&gt; …是用git log 查出来的版本号，输入前几位git即可搜索，此命令可以回到该版本号的版本。</p>
-</blockquote>
-<p>现在又想回到最新的版本。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br><span class="line">git reset --hard &lt;......&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>get reflog 可以查看版本操作历史，可以列出所有的版本号。</p>
-</blockquote>
-<p>如何撤销修改</p>
-<ul>
-<li><p>撤销未进入换成区的修改  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;filename&gt;</span><br><span class="line">``` </span><br><span class="line">- 将缓存区的修改撤销，移回工作区</span><br><span class="line">```bash</span><br><span class="line">git restore unstaged --&lt;filename&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>已经提交到版本库，commit后自然只有回退版本了。</p>
-</li>
-</ul>
-<p>删除文件<br>用 rm \<filename\> 删除的文件可以用 git checkout — \<filename\> 恢复，git rm \<filename\>删除的文件只能通过回退版本。</filename\></filename\></filename\></p>
-<h2 id="远程仓库-github"><a href="#远程仓库-github" class="headerlink" title="远程仓库(github)"></a>远程仓库(github)</h2>
-          
+<p>git init 初始化当前文件夹为一个版本库，于是git可以控制在此文件夹或其子文件夹的内容。（文件夹的内容不需要为空）<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/18/Learn-Git-and-Github/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></blockquote></div>
     
     
     
@@ -737,7 +720,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -909,6 +892,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

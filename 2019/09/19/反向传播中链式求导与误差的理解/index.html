@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
+<html class="theme-next gemini use-motion" lang="en">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="tenpha&#39;s blog">
 <meta property="og:description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:   grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-30T02:34:07.725Z">
+<meta property="og:updated_time" content="2019-09-30T04:36:08.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反向传播中链式求导与误差的理解">
 <meta name="twitter:description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:   grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？">
@@ -98,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -311,7 +311,7 @@
 
       
         <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:  </p>
-<script type="math/tex; mode=display">grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}</script><p>那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？</p>
+<script type="math/tex; mode=display">grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}</script><p>那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？<br><a id="more"></a></p>
 <h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>首先可以肯定的是反向传播算法的本质依然是使用链式求导法则。但没有直接使用链式求导，而用反向传播算法和误差的原因我认为有两点:</p>
 <h3 id="1-模型的通用化"><a href="#1-模型的通用化" class="headerlink" title="1. 模型的通用化"></a>1. 模型的通用化</h3><p>对于一个较深的神经网络，求导每一层参数的梯度的公式都不一样，比如第一层的梯度一定是一个非常长串的公式。反向传播中误差δ只是一个记号，暂存了求导时的中间变量。虽然不清楚反向传播每一层的具体细节做了什么，但可以理解为每一层都用相同的模式处理，就是用该层的误差去更新该层的权重。</p>
 <h3 id="2-缩减计算成本"><a href="#2-缩减计算成本" class="headerlink" title="2. 缩减计算成本"></a>2. 缩减计算成本</h3><p>回顾高数中的链式求导，可以知道求导过程中存在大量的重复计算，求解链末端的导数需要将前面的导数都计算一遍。引入δ误差存储中间结果，极大的避免了重复计算。</p>
@@ -518,7 +518,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -694,6 +694,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
