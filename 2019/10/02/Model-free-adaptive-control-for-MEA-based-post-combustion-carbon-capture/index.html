@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Neural Network,">
+  <meta name="keywords" content="MFAC,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:   grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？">
-<meta name="keywords" content="Neural Network">
+<meta name="description" content="思考 作者试图完成什么？ 对于工厂中的二次燃烧碳捕获（PCC）过程，由于存在着供电的不稳定以及其它扰动因素，传统的PI控制不能满足此流程的灵活性需求。在继PID控制之后，研究者将模型预测控制（MPC）用于PCC过程，并且取得了相当不错的效果，但是MPC需要离线数据去得到预测模型，并且在实际环境中由于扰动可能会造成数据不匹配现象（mismatch），因此需要在实际中调整参数以获得更好性能。针对以上情">
+<meta name="keywords" content="MFAC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="反向传播中链式求导与误差的理解">
-<meta property="og:url" content="http://yoursite.com/2019/09/19/反向传播中链式求导与误差的理解/index.html">
+<meta property="og:title" content="Model-free adaptive control for MEA-based post-combustion carbon capture">
+<meta property="og:url" content="http://yoursite.com/2019/10/02/Model-free-adaptive-control-for-MEA-based-post-combustion-carbon-capture/index.html">
 <meta property="og:site_name" content="tenpha&#39;s blog">
-<meta property="og:description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:   grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？">
+<meta property="og:description" content="思考 作者试图完成什么？ 对于工厂中的二次燃烧碳捕获（PCC）过程，由于存在着供电的不稳定以及其它扰动因素，传统的PI控制不能满足此流程的灵活性需求。在继PID控制之后，研究者将模型预测控制（MPC）用于PCC过程，并且取得了相当不错的效果，但是MPC需要离线数据去得到预测模型，并且在实际环境中由于扰动可能会造成数据不匹配现象（mismatch），因此需要在实际中调整参数以获得更好性能。针对以上情">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-30T04:36:08.970Z">
+<meta property="og:updated_time" content="2019-10-03T13:48:49.732Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="反向传播中链式求导与误差的理解">
-<meta name="twitter:description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:   grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？">
+<meta name="twitter:title" content="Model-free adaptive control for MEA-based post-combustion carbon capture">
+<meta name="twitter:description" content="思考 作者试图完成什么？ 对于工厂中的二次燃烧碳捕获（PCC）过程，由于存在着供电的不稳定以及其它扰动因素，传统的PI控制不能满足此流程的灵活性需求。在继PID控制之后，研究者将模型预测控制（MPC）用于PCC过程，并且取得了相当不错的效果，但是MPC需要离线数据去得到预测模型，并且在实际环境中由于扰动可能会造成数据不匹配现象（mismatch），因此需要在实际中调整参数以获得更好性能。针对以上情">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/19/反向传播中链式求导与误差的理解/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/02/Model-free-adaptive-control-for-MEA-based-post-combustion-carbon-capture/">
 
 
 
 
 
-  <title>反向传播中链式求导与误差的理解 | tenpha's blog</title>
+  <title>Model-free adaptive control for MEA-based post-combustion carbon capture | tenpha's blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/反向传播中链式求导与误差的理解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/02/Model-free-adaptive-control-for-MEA-based-post-combustion-carbon-capture/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tenpha">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">反向传播中链式求导与误差的理解</h1>
+          <h1 class="post-title" itemprop="name headline">Model-free adaptive control for MEA-based post-combustion carbon capture</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-19T09:51:14+08:00">
-                2019-09-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-02T11:11:40+08:00">
+                2019-10-02
               </time>
             
 
@@ -292,6 +292,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Thesis/" itemprop="url" rel="index">
+                    <span itemprop="name">Thesis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -320,11 +342,33 @@
       
 
       
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:  </p>
-<script type="math/tex; mode=display">grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}</script><p>那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？<br><a id="more"></a></p>
-<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>首先可以肯定的是反向传播算法的本质依然是使用链式求导法则。但没有直接使用链式求导，而用反向传播算法和误差的原因我认为有两点:</p>
-<h3 id="1-模型的通用化"><a href="#1-模型的通用化" class="headerlink" title="1. 模型的通用化"></a>1. 模型的通用化</h3><p>对于一个较深的神经网络，求导每一层参数的梯度的公式都不一样，比如第一层的梯度一定是一个非常长串的公式。反向传播中误差δ只是一个记号，暂存了求导时的中间变量。虽然不清楚反向传播每一层的具体细节做了什么，但可以理解为每一层都用相同的模式处理，就是用该层的误差去更新该层的权重。</p>
-<h3 id="2-缩减计算成本"><a href="#2-缩减计算成本" class="headerlink" title="2. 缩减计算成本"></a>2. 缩减计算成本</h3><p>回顾高数中的链式求导，可以知道求导过程中存在大量的重复计算，求解链末端的导数需要将前面的导数都计算一遍。引入δ误差存储中间结果，极大的避免了重复计算。</p>
+        <h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ul>
+<li><h3 id="作者试图完成什么？"><a href="#作者试图完成什么？" class="headerlink" title="作者试图完成什么？"></a>作者试图完成什么？</h3><blockquote>
+<p>对于工厂中的二次燃烧碳捕获（PCC）过程，由于存在着供电的不稳定以及其它扰动因素，传统的PI控制不能满足此流程的灵活性需求。在继PID控制之后，研究者将模型预测控制（MPC）用于PCC过程，并且取得了相当不错的效果，但是MPC需要离线数据去得到预测模型，并且在实际环境中由于扰动可能会造成数据不匹配现象（mismatch），因此需要在实际中调整参数以获得更好性能。<br><strong>针对以上情况，本文中作者提出了用无模型自适应控制（MFAC）算法控制PCC过程，并用仿真结果对MFAC、MPC、PI的控制效果进行了验证。</strong></p>
+</blockquote>
+</li>
+<li><h3 id="这个方法的关键是什么？"><a href="#这个方法的关键是什么？" class="headerlink" title="这个方法的关键是什么？"></a>这个方法的关键是什么？</h3><blockquote>
+<p>  <strong>关键在于MFAC的无模型，对比MPC，MFAC不需要离线数据，不需要生成模型，自身能达到在线控制的效果。对比PI控制，简单的调参就能控制系统的稳定性，PI控制的稳定性却是基于模型的。</strong></p>
+</blockquote>
+</li>
+<li><h3 id="换了我自己能用什么其他方法？"><a href="#换了我自己能用什么其他方法？" class="headerlink" title="换了我自己能用什么其他方法？"></a>换了我自己能用什么其他方法？</h3><blockquote>
+<p> 暂时没想法</p>
+</blockquote>
+</li>
+<li><h3 id="我还想要什么其他的参考资料？"><a href="#我还想要什么其他的参考资料？" class="headerlink" title="我还想要什么其他的参考资料？"></a>我还想要什么其他的参考资料？</h3><blockquote>
+<ol>
+<li>MFAC的算法固定，也许需要其他优化MFAC的论文。</li>
+<li>The Principle Model (机理模型)</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><h3 id="AIC"><a href="#AIC" class="headerlink" title="AIC"></a>AIC</h3><blockquote>
+<p>AIC(Akaike Information Criterium,赤池信息准则)，用于对候选模型的选择。一般来说，越为复杂的模型对数据的拟合就越好，但可能发生过拟合（over-fitting），过度拟合了噪音数据，简单的模型有更少的参数，但是模型的准确率可能不理想。如何在候选模型中选出最优的模型，即如何权衡模型的复杂度与准确度，AIC可以帮助我们选出模型。  </p>
+</blockquote>
+<p>AIC的公式并不复杂，但背后有坚实的信息理论。基本的AIC表达式如下：</p>
+<script type="math/tex; mode=display">AIC = ln(s_{m}^{2}) + 2m/T</script><p>$s_{m}^{2} = RSS/T$ ，RSS是残差平方和<a href="https://baike.baidu.com/item/%E6%AE%8B%E5%B7%AE%E5%B9%B3%E6%96%B9%E5%92%8C" target="_blank" rel="noopener">（百度百科）</a>，如果是神经网络的预测模型，那么$RSS = \sum_{t=1}^{T}(\hat{y}(t)-y(t))^{2}$，T是样本数，m是模型的参数数量（包括已经确定的参数）。<br>另一种AIC等价的表示为：</p>
+<script type="math/tex; mode=display">AIC=Tln(RSS) + 2K</script><p>K是模型参数的个数，T是样本数。</p>
 
       
     </div>
@@ -342,7 +386,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Neural-Network/" rel="tag"># Neural Network</a>
+            <a href="/tags/MFAC/" rel="tag"># MFAC</a>
           
         </div>
       
@@ -355,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/18/Learn-Git-and-Github/" rel="next" title="Learn Git and Github">
-                <i class="fa fa-chevron-left"></i> Learn Git and Github
+              <a href="/2019/09/19/反向传播中链式求导与误差的理解/" rel="next" title="反向传播中链式求导与误差的理解">
+                <i class="fa fa-chevron-left"></i> 反向传播中链式求导与误差的理解
               </a>
             
           </div>
@@ -365,8 +409,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/02/Model-free-adaptive-control-for-MEA-based-post-combustion-carbon-capture/" rel="prev" title="Model-free adaptive control for MEA-based post-combustion carbon capture">
-                Model-free adaptive control for MEA-based post-combustion carbon capture <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/27/关于优化算法在MFAC参数整定的研究/" rel="prev" title="关于优化算法在MFAC参数整定的研究">
+                关于优化算法在MFAC参数整定的研究 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -499,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解"><span class="nav-number">2.</span> <span class="nav-text">理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-模型的通用化"><span class="nav-number">2.1.</span> <span class="nav-text">1. 模型的通用化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-缩减计算成本"><span class="nav-number">2.2.</span> <span class="nav-text">2. 缩减计算成本</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#思考"><span class="nav-number">1.</span> <span class="nav-text">思考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作者试图完成什么？"><span class="nav-number">1.1.</span> <span class="nav-text">作者试图完成什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这个方法的关键是什么？"><span class="nav-number">1.2.</span> <span class="nav-text">这个方法的关键是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#换了我自己能用什么其他方法？"><span class="nav-number">1.3.</span> <span class="nav-text">换了我自己能用什么其他方法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我还想要什么其他的参考资料？"><span class="nav-number">1.4.</span> <span class="nav-text">我还想要什么其他的参考资料？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Appendix"><span class="nav-number">2.</span> <span class="nav-text">Appendix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AIC"><span class="nav-number">2.1.</span> <span class="nav-text">AIC</span></a></li></ol></li></ol></div>
             
 
           </div>

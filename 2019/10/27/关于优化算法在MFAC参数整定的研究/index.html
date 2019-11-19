@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Neural Network,">
+  <meta name="keywords" content="MFAC,优化算法,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:   grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？">
-<meta name="keywords" content="Neural Network">
+<meta name="description" content="1. 介绍无模型自适应控制是一种数据驱动的控制方法，仅靠输入输出和少量的控制参数就能对复杂非线性的系统进行较好的控制。因此在无模型自适应控制中，选取合理的控制参数λ，ρ，μ，η的值有着十分重要的意义。目前关于MFAC的参数整定已经出现了很多方法，但均没有形成像PID参数整定的系统的整定准则，可以说还处于探索阶段。本文主要介绍利用生物启发式的优化算法来确定MFAC的四个参数。《一种新的无模型自适应控">
+<meta name="keywords" content="MFAC,优化算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="反向传播中链式求导与误差的理解">
-<meta property="og:url" content="http://yoursite.com/2019/09/19/反向传播中链式求导与误差的理解/index.html">
+<meta property="og:title" content="关于优化算法在MFAC参数整定的研究">
+<meta property="og:url" content="http://yoursite.com/2019/10/27/关于优化算法在MFAC参数整定的研究/index.html">
 <meta property="og:site_name" content="tenpha&#39;s blog">
-<meta property="og:description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:   grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？">
+<meta property="og:description" content="1. 介绍无模型自适应控制是一种数据驱动的控制方法，仅靠输入输出和少量的控制参数就能对复杂非线性的系统进行较好的控制。因此在无模型自适应控制中，选取合理的控制参数λ，ρ，μ，η的值有着十分重要的意义。目前关于MFAC的参数整定已经出现了很多方法，但均没有形成像PID参数整定的系统的整定准则，可以说还处于探索阶段。本文主要介绍利用生物启发式的优化算法来确定MFAC的四个参数。《一种新的无模型自适应控">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-30T04:36:08.970Z">
+<meta property="og:updated_time" content="2019-10-27T07:06:35.151Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="反向传播中链式求导与误差的理解">
-<meta name="twitter:description" content="问题描述人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:   grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？">
+<meta name="twitter:title" content="关于优化算法在MFAC参数整定的研究">
+<meta name="twitter:description" content="1. 介绍无模型自适应控制是一种数据驱动的控制方法，仅靠输入输出和少量的控制参数就能对复杂非线性的系统进行较好的控制。因此在无模型自适应控制中，选取合理的控制参数λ，ρ，μ，η的值有着十分重要的意义。目前关于MFAC的参数整定已经出现了很多方法，但均没有形成像PID参数整定的系统的整定准则，可以说还处于探索阶段。本文主要介绍利用生物启发式的优化算法来确定MFAC的四个参数。《一种新的无模型自适应控">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/19/反向传播中链式求导与误差的理解/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/27/关于优化算法在MFAC参数整定的研究/">
 
 
 
 
 
-  <title>反向传播中链式求导与误差的理解 | tenpha's blog</title>
+  <title>关于优化算法在MFAC参数整定的研究 | tenpha's blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/反向传播中链式求导与误差的理解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/关于优化算法在MFAC参数整定的研究/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tenpha">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">反向传播中链式求导与误差的理解</h1>
+          <h1 class="post-title" itemprop="name headline">关于优化算法在MFAC参数整定的研究</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-19T09:51:14+08:00">
-                2019-09-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-27T13:48:40+08:00">
+                2019-10-27
               </time>
             
 
@@ -292,6 +292,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MFAC/" itemprop="url" rel="index">
+                    <span itemprop="name">MFAC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -320,11 +342,21 @@
       
 
       
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>人工的神经网络可以看成是多个logistic回归的叠加，在用梯度下降求解logistic回归代价函数时，我们直接用偏导的公式得到梯度:  </p>
-<script type="math/tex; mode=display">grad = \sum_{i=1}^{m}(h_{(x^{i})}-y^{(i))})x^{i}</script><p>那么对于神经网络来说，即使代价函数更为复杂，我们也可以通过链式求导法则去求得每层参数的梯度，从而完成梯度下降的更新，为什么要引入反向传播算法与误差的概念？<br><a id="more"></a></p>
-<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>首先可以肯定的是反向传播算法的本质依然是使用链式求导法则。但没有直接使用链式求导，而用反向传播算法和误差的原因我认为有两点:</p>
-<h3 id="1-模型的通用化"><a href="#1-模型的通用化" class="headerlink" title="1. 模型的通用化"></a>1. 模型的通用化</h3><p>对于一个较深的神经网络，求导每一层参数的梯度的公式都不一样，比如第一层的梯度一定是一个非常长串的公式。反向传播中误差δ只是一个记号，暂存了求导时的中间变量。虽然不清楚反向传播每一层的具体细节做了什么，但可以理解为每一层都用相同的模式处理，就是用该层的误差去更新该层的权重。</p>
-<h3 id="2-缩减计算成本"><a href="#2-缩减计算成本" class="headerlink" title="2. 缩减计算成本"></a>2. 缩减计算成本</h3><p>回顾高数中的链式求导，可以知道求导过程中存在大量的重复计算，求解链末端的导数需要将前面的导数都计算一遍。引入δ误差存储中间结果，极大的避免了重复计算。</p>
+        <h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>无模型自适应控制是一种数据驱动的控制方法，仅靠输入输出和少量的控制参数就能对复杂非线性的系统进行较好的控制。因此在无模型自适应控制中，选取合理的控制参数λ，ρ，μ，η的值有着十分重要的意义。目前关于MFAC的参数整定已经出现了很多方法，但均没有形成像PID参数整定的系统的整定准则，可以说还处于探索阶段。本文主要介绍利用生物启发式的优化算法来确定MFAC的四个参数。<br>《一种新的无模型自适应控制模型参数整定方法》提出通过设定参数ρ，用遗传算法求解最小适应度函数，得到与ρ与λ，μ，η的关联关系，从而将MFAC的四个参数调整缩小到一个参数，于是能通过控制ρ实现MFAC。<br>《PSO Optimal Control of Model-free Adaptive Controlfor PVC Polymerization Process》提出用粒子群优化算法直接搜索四个参数，并且能达到不错的控制效果。</p>
+<h2 id="2-磷虾算法及其优化算法-Krill-Herd-Alg"><a href="#2-磷虾算法及其优化算法-Krill-Herd-Alg" class="headerlink" title="2. 磷虾算法及其优化算法 (Krill Herd Alg)"></a>2. 磷虾算法及其优化算法 (Krill Herd Alg)</h2><h3 id="2-1-磷虾算法"><a href="#2-1-磷虾算法" class="headerlink" title="2.1 磷虾算法"></a>2.1 磷虾算法</h3><blockquote>
+<p>既然能通过PSO搜索MFAC的四个参数，那么其它的优化算法是否也行并且达到比PSO更好的效果？  </p>
+</blockquote>
+<p>磷虾算法是一种生物启发式算法，灵感来源于南极磷虾的生活环境。于2012年论文《Krill herd A new bio-inspired optimization algorithm》中提出。<br>算法的流程和伪代码可参考论文《Chaotic Krill Herd algorithm》中的Krill herd method部分。在MFAC中适应度函数可以设计为：</p>
+<blockquote>
+<script type="math/tex; mode=display">F(\lambda ,\mu,\rho ,\eta ) =  \sum_{k=1}^{N}(y_{r}(k+1) - y(k+1))^{2}+(u(k) - u(k-1))^{2}+(y(k) - y(k-1))^{2}</script></blockquote>
+<p>在设定实际输出与期望输出后，通过MATLAB进行仿真实验，对比KH算法和PSO算法。发现针对上述的MFAC的适应度函数，KH在收敛精度和运行时间上均劣于PSO算法，也就是说，PSO搜索出的最优参数在MFAC的控制效果上，大概率比KH算法具有更好的表现性能，比如稳态误差和上升时间等指标。</p>
+<h3 id="2-2-CKH算法"><a href="#2-2-CKH算法" class="headerlink" title="2.2 CKH算法"></a>2.2 CKH算法</h3><blockquote>
+<p>但实际上，在Benchmark的表现上KH算法在多峰函数上优于PSO算法，也许有其他方法可以使得KH在MFAC的适应度函数上表现更好的性能。</p>
+</blockquote>
+<p>混沌磷虾算法(CKH,Chaotic Krill Herd algorithm)于2014年论文《Chaotic Krill Herd algorithm》中提出，主要方法为用混沌映射函数代替KH算法中的随机生成函数，从而更好的搜索全局最优。算法的流程和伪代码可参考论文《Chaotic Krill Herd algorithm》中的The proposed CKH approach部分。<br>适应度函数与上述一样，混沌映射函数使用Logistic Map，a = 3.6。</p>
+<blockquote>
+<script type="math/tex; mode=display">x_{(k+1)} = ax_{k}(1-x_{k})</script></blockquote>
+<p>仿真实验表明，CKH在上述适应度函数搜索中能达到与PSO相差无几的性能，优于KH算法。</p>
 
       
     </div>
@@ -342,7 +374,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Neural-Network/" rel="tag"># Neural Network</a>
+            <a href="/tags/MFAC-优化算法/" rel="tag"># MFAC,优化算法</a>
           
         </div>
       
@@ -355,8 +387,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/18/Learn-Git-and-Github/" rel="next" title="Learn Git and Github">
-                <i class="fa fa-chevron-left"></i> Learn Git and Github
+              <a href="/2019/10/02/Model-free-adaptive-control-for-MEA-based-post-combustion-carbon-capture/" rel="next" title="Model-free adaptive control for MEA-based post-combustion carbon capture">
+                <i class="fa fa-chevron-left"></i> Model-free adaptive control for MEA-based post-combustion carbon capture
               </a>
             
           </div>
@@ -365,8 +397,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/02/Model-free-adaptive-control-for-MEA-based-post-combustion-carbon-capture/" rel="prev" title="Model-free adaptive control for MEA-based post-combustion carbon capture">
-                Model-free adaptive control for MEA-based post-combustion carbon capture <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/19/Krill-Herd-Algorithm/" rel="prev" title="Krill Herd Algorithm">
+                Krill Herd Algorithm <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -499,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解"><span class="nav-number">2.</span> <span class="nav-text">理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-模型的通用化"><span class="nav-number">2.1.</span> <span class="nav-text">1. 模型的通用化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-缩减计算成本"><span class="nav-number">2.2.</span> <span class="nav-text">2. 缩减计算成本</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.</span> <span class="nav-text">1. 介绍</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#2-磷虾算法及其优化算法-Krill-Herd-Alg"><span class="nav-number"></span> <span class="nav-text">2. 磷虾算法及其优化算法 (Krill Herd Alg)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-磷虾算法"><span class="nav-number">1.</span> <span class="nav-text">2.1 磷虾算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-CKH算法"><span class="nav-number">2.</span> <span class="nav-text">2.2 CKH算法</span></a></li></ol></li></div>
             
 
           </div>

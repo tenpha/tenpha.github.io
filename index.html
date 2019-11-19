@@ -197,6 +197,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -239,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/19/Krill-Herd-Algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tenpha">
@@ -258,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/28/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2019/11/19/Krill-Herd-Algorithm/" itemprop="url">Krill Herd Algorithm</a></h1>
         
 
         <div class="post-meta">
@@ -270,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-28T19:55:55+08:00">
-                2019-09-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-19T08:47:04+08:00">
+                2019-11-19
               </time>
             
 
@@ -310,15 +320,353 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>如今，仿生算法可以分为三类：  </p>
+<ol>
+<li>进化算法，GA，DE等</li>
+<li>群智能算法，PSO，ACO，以及将要提到的KH</li>
+<li>细菌觅食算法，COSMIC  </li>
+</ol>
+<p>这些仿生算法都是从自然界的生物或者微生物的生存中得到启发，比如GA从达尔文的适者生存法则中得到启发，PSO从生物（鸟）觅食中得到启发，同样KH算法通过对南极磷虾的生存模拟得到一种新的优化算法，KH算法是一种群智能算法。</p>
+<h2 id="KHA"><a href="#KHA" class="headerlink" title="KHA"></a>KHA</h2><p>磷虾的运动受到三个因素的影响：</p>
+<ol>
+<li>诱导运动</li>
+<li>觅食运动</li>
+<li>随机扩散  </li>
+</ol>
+<p>解释一下这三种运动或者说是抽象出的数学模型的背景，诱导运动是指一个磷虾个体受到其它磷虾的诱导产生的运动，这里的诱导又有两种因素的诱导：<br>（1）整个群体最优的磷虾产生的目标影响，这种目标诱导使得磷虾往目前全局最优的位置靠近收敛。<br>（2）邻居产生的局部影响，这来源于磷虾的生存环境，由于磷虾容易遭受捕食者的捕捉，因此会抱团行动增加生存的几率，所以磷虾会往邻近的群体靠拢。</p>
+<p>磷虾除了躲避捕食者的不足，自身还要进行觅食运动，在算法中的食物是根据全部磷虾位置虚拟出的一个食物位置，磷虾位置的更新也会导致食物位置的更新，食物位置也指导着磷虾的运动方向，最终食物位置会移动到磷虾收敛的位置（食物位置可以假想为所有磷虾位置的平均值，磷虾已经聚集代表算法收敛，那么食物的位置就是磷虾聚集的位置，也就是最优解）。  </p>
+<p>优化算法中一定会用到随机化技术，注意不是随机搜索，虽然会加入随机过程，但是是有方向指导的随机，在磷虾算法中，诱导运动和觅食运动指导了磷虾个体的移动方向，随机扩散的加入是让磷虾在运动过程中多一些全局勘探的能力，随机扩散会使得磷虾些许偏离指导方向，但在整体上所有磷虾个体仍会朝着算法期望的方向运动。  </p>
+<p>对一个磷虾个体计算完这三个运动分量以后加在一起，就是此磷虾个体在一次迭代中的运动方向，对所有磷虾进行操作就是整个磷虾群在一次迭代的运动方向。</p>
+<p>对比最简单的群智能算法PSO，其实可以发现在整体想法上，KH算法与PSO大同小异  </p>
+<ol>
+<li>都是先随机产生初始随机种群，通过一定的运动指导法则让种群进行更新，最后能达到收敛于最优或者次优的值。PSO的运动法则一步到位，而KH算法用了三个。</li>
+<li>指导法则的复杂也带来了好处，多种运动的相互作用使得KH不易于困于局部最优，相比PSO算法来说会具有有更强的全局勘探能力。</li>
+<li>PSO与KH都根据了全局与局部影响来更新当前位置，因此他们的结合可能会有比单一算法更好的效果。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/关于优化算法在MFAC参数整定的研究/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tenpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tenpha's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/27/关于优化算法在MFAC参数整定的研究/" itemprop="url">关于优化算法在MFAC参数整定的研究</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-27T13:48:40+08:00">
+                2019-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MFAC/" itemprop="url" rel="index">
+                    <span itemprop="name">MFAC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>无模型自适应控制是一种数据驱动的控制方法，仅靠输入输出和少量的控制参数就能对复杂非线性的系统进行较好的控制。因此在无模型自适应控制中，选取合理的控制参数λ，ρ，μ，η的值有着十分重要的意义。目前关于MFAC的参数整定已经出现了很多方法，但均没有形成像PID参数整定的系统的整定准则，可以说还处于探索阶段。本文主要介绍利用生物启发式的优化算法来确定MFAC的四个参数。<br>《一种新的无模型自适应控制模型参数整定方法》提出通过设定参数ρ，用遗传算法求解最小适应度函数，得到与ρ与λ，μ，η的关联关系，从而将MFAC的四个参数调整缩小到一个参数，于是能通过控制ρ实现MFAC。<br>《PSO Optimal Control of Model-free Adaptive Controlfor PVC Polymerization Process》提出用粒子群优化算法直接搜索四个参数，并且能达到不错的控制效果。</p>
+<h2 id="2-磷虾算法及其优化算法-Krill-Herd-Alg"><a href="#2-磷虾算法及其优化算法-Krill-Herd-Alg" class="headerlink" title="2. 磷虾算法及其优化算法 (Krill Herd Alg)"></a>2. 磷虾算法及其优化算法 (Krill Herd Alg)</h2><h3 id="2-1-磷虾算法"><a href="#2-1-磷虾算法" class="headerlink" title="2.1 磷虾算法"></a>2.1 磷虾算法</h3><blockquote>
+<p>既然能通过PSO搜索MFAC的四个参数，那么其它的优化算法是否也行并且达到比PSO更好的效果？  </p>
+</blockquote>
+<p>磷虾算法是一种生物启发式算法，灵感来源于南极磷虾的生活环境。于2012年论文《Krill herd A new bio-inspired optimization algorithm》中提出。<br>算法的流程和伪代码可参考论文《Chaotic Krill Herd algorithm》中的Krill herd method部分。在MFAC中适应度函数可以设计为：</p>
+<blockquote>
+<script type="math/tex; mode=display">F(\lambda ,\mu,\rho ,\eta ) =  \sum_{k=1}^{N}(y_{r}(k+1) - y(k+1))^{2}+(u(k) - u(k-1))^{2}+(y(k) - y(k-1))^{2}</script></blockquote>
+<p>在设定实际输出与期望输出后，通过MATLAB进行仿真实验，对比KH算法和PSO算法。发现针对上述的MFAC的适应度函数，KH在收敛精度和运行时间上均劣于PSO算法，也就是说，PSO搜索出的最优参数在MFAC的控制效果上，大概率比KH算法具有更好的表现性能，比如稳态误差和上升时间等指标。</p>
+<h3 id="2-2-CKH算法"><a href="#2-2-CKH算法" class="headerlink" title="2.2 CKH算法"></a>2.2 CKH算法</h3><blockquote>
+<p>但实际上，在Benchmark的表现上KH算法在多峰函数上优于PSO算法，也许有其他方法可以使得KH在MFAC的适应度函数上表现更好的性能。</p>
+</blockquote>
+<p>混沌磷虾算法(CKH,Chaotic Krill Herd algorithm)于2014年论文《Chaotic Krill Herd algorithm》中提出，主要方法为用混沌映射函数代替KH算法中的随机生成函数，从而更好的搜索全局最优。算法的流程和伪代码可参考论文《Chaotic Krill Herd algorithm》中的The proposed CKH approach部分。<br>适应度函数与上述一样，混沌映射函数使用Logistic Map，a = 3.6。</p>
+<blockquote>
+<script type="math/tex; mode=display">x_{(k+1)} = ax_{k}(1-x_{k})</script></blockquote>
+<p>仿真实验表明，CKH在上述适应度函数搜索中能达到与PSO相差无几的性能，优于KH算法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/02/Model-free-adaptive-control-for-MEA-based-post-combustion-carbon-capture/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tenpha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tenpha's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/02/Model-free-adaptive-control-for-MEA-based-post-combustion-carbon-capture/" itemprop="url">Model-free adaptive control for MEA-based post-combustion carbon capture</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-02T11:11:40+08:00">
+                2019-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Thesis/" itemprop="url" rel="index">
+                    <span itemprop="name">Thesis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ul>
+<li><h3 id="作者试图完成什么？"><a href="#作者试图完成什么？" class="headerlink" title="作者试图完成什么？"></a>作者试图完成什么？</h3><blockquote>
+<p>对于工厂中的二次燃烧碳捕获（PCC）过程，由于存在着供电的不稳定以及其它扰动因素，传统的PI控制不能满足此流程的灵活性需求。在继PID控制之后，研究者将模型预测控制（MPC）用于PCC过程，并且取得了相当不错的效果，但是MPC需要离线数据去得到预测模型，并且在实际环境中由于扰动可能会造成数据不匹配现象（mismatch），因此需要在实际中调整参数以获得更好性能。<br><strong>针对以上情况，本文中作者提出了用无模型自适应控制（MFAC）算法控制PCC过程，并用仿真结果对MFAC、MPC、PI的控制效果进行了验证。</strong></p>
+</blockquote>
+</li>
+<li><h3 id="这个方法的关键是什么？"><a href="#这个方法的关键是什么？" class="headerlink" title="这个方法的关键是什么？"></a>这个方法的关键是什么？</h3><blockquote>
+<p>  <strong>关键在于MFAC的无模型，对比MPC，MFAC不需要离线数据，不需要生成模型，自身能达到在线控制的效果。对比PI控制，简单的调参就能控制系统的稳定性，PI控制的稳定性却是基于模型的。</strong></p>
+</blockquote>
+</li>
+<li><h3 id="换了我自己能用什么其他方法？"><a href="#换了我自己能用什么其他方法？" class="headerlink" title="换了我自己能用什么其他方法？"></a>换了我自己能用什么其他方法？</h3><blockquote>
+<p> 暂时没想法</p>
+</blockquote>
+</li>
+<li><h3 id="我还想要什么其他的参考资料？"><a href="#我还想要什么其他的参考资料？" class="headerlink" title="我还想要什么其他的参考资料？"></a>我还想要什么其他的参考资料？</h3><blockquote>
+<ol>
+<li>MFAC的算法固定，也许需要其他优化MFAC的论文。</li>
+<li>The Principle Model (机理模型)</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><h3 id="AIC"><a href="#AIC" class="headerlink" title="AIC"></a>AIC</h3><blockquote>
+<p>AIC(Akaike Information Criterium,赤池信息准则)，用于对候选模型的选择。一般来说，越为复杂的模型对数据的拟合就越好，但可能发生过拟合（over-fitting），过度拟合了噪音数据，简单的模型有更少的参数，但是模型的准确率可能不理想。如何在候选模型中选出最优的模型，即如何权衡模型的复杂度与准确度，AIC可以帮助我们选出模型。  </p>
+</blockquote>
+<p>AIC的公式并不复杂，但背后有坚实的信息理论。基本的AIC表达式如下：</p>
+<script type="math/tex; mode=display">AIC = ln(s_{m}^{2}) + 2m/T</script><p>$s_{m}^{2} = RSS/T$ ，RSS是残差平方和<a href="https://baike.baidu.com/item/%E6%AE%8B%E5%B7%AE%E5%B9%B3%E6%96%B9%E5%92%8C" target="_blank" rel="noopener">（百度百科）</a>，如果是神经网络的预测模型，那么$RSS = \sum_{t=1}^{T}(\hat{y}(t)-y(t))^{2}$，T是样本数，m是模型的参数数量（包括已经确定的参数）。<br>另一种AIC等价的表示为：</p>
+<script type="math/tex; mode=display">AIC=Tln(RSS) + 2K</script><p>K是模型参数的个数，T是样本数。</p>
 
           
         
@@ -652,12 +1000,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
             
 
             
@@ -665,7 +1022,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
